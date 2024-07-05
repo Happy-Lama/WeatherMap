@@ -33,6 +33,7 @@ let customLayerControls = L.Control.extend({
                 }
                 map.addLayer(entries[i][1][0]);
                 current_layer = entries[i];
+                console.log("current layer", current_layer)
                 let colorbar = document.getElementById('values');
                 // console.log(colorbar)
                 colorbar.style.background = color_ramps[entries[i][1][1]][0]
@@ -48,7 +49,7 @@ let customLayerControls = L.Control.extend({
                 // div.classList.add('colorbar_values')
                 document.getElementById('units').innerText = color_ramps[entries[i][1][1]][2]
                 // document.getElementById('units').appendChild(div)
-
+                console.log(current_layer)
             });
         }
 
@@ -60,9 +61,5 @@ let customLayerControls = L.Control.extend({
     onRemove: function(map) {
         // Nothing here
     },
-
-    _getGradient: function(current_layer){
-
-    }
 });
 

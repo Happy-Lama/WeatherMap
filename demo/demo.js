@@ -66,15 +66,22 @@ map.addEventListener('click', (event) =>{
   if(standaloneTooltip){
       removeTooltip();
   }
-  standaloneTooltip = L.tooltip().setContent(`${Math.floor(event.latlng.lat)}, ${Math.floor(event.latlng.lng)}`)
-                      .setLatLng([event.latlng.lat, event.latlng.lng])
-                      .addTo(map);
+
+  $.getJSON(json_dir + json_files[current_layer[1][1] - 1], function(data){
+    if(current_layer){
+      let value = getValueAtCoordinates(data[0].data,data[0].header,event.latlng.lat, event.latlng.lng)
+      standaloneTooltip = L.tooltip().setContent(
+        `<p>${value} ${color_ramps[current_layer[1][1]][2]}</p>
+        Latitude: ${event.latlng.lat.toFixed(2)}, Longitude: ${event.latlng.lng.toFixed(2)}`
+      ).setLatLng([event.latlng.lat, event.latlng.lng])
+      .addTo(map);
+    }
+  })
+  
 })
 
 //load the velocity layers
-$.getJSON("current-wind-surface-level-gfs-1.0.json", function(data) {
-  
-
+$.getJSON("./data/weather/current/current-wind-surface-level-gfs-1.0.json", function(data) {
   var velocityLayer = L.velocityLayer({
     displayValues: true,
     displayOptions: {
@@ -83,7 +90,7 @@ $.getJSON("current-wind-surface-level-gfs-1.0.json", function(data) {
       emptyString: "No wind data"
     },
     data: data,
-    maxVelocity: 0
+    maxVelocity: 40
   });
 
   // layerControl.addOverlay(velocityLayer, "Wind - Global");
