@@ -1,0 +1,37 @@
+<!-- https://github.com/onaci/leaflet-velocity -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LeafletVelocity Demo</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.1.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="./dist/leaflet-velocity.css" />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <div id="map">
+      <!-- <div id="colorbar_div"> -->
+        
+        <div id="colorbar">
+          <div id="values"></div>
+          <div class="colorbar_values">Units: <span id="units"></span></div>
+        </div>
+      <!-- </div> -->
+    </div>
+
+    <!--vendor-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    
+    <script src="https://npmcdn.com/leaflet@1.1.0/dist/leaflet.js"></script>
+
+    <!--leaflet-velocity-->
+    
+    <script src="./dist/leaflet-velocity.js"></script>
+    <script src="color_ramps.js"></script>
+    <script src="overlayLayers.js"></script>
+    <script src="layerControls.js"></script>
+    <script src="demo.js"></script>
+    
+  </body>
+</html>
